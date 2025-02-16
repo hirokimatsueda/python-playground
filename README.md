@@ -16,5 +16,9 @@ My experimental codes of Python.
 
 ### Testing and Quality Control (テストと品質管理)
 
+- [How to use unittest](./how_to_use_unittest/) (Python の unittest を使用する方法)
+
+  - Blog post: [Python の unittest ライブラリの基本 - Qiita](https://qiita.com/pokapu/items/902dfb190264a7fc0e2a)
+
 - [How to use unittest mock](./how_to_use_unittest_mock/) (Python の unittest で Mock を使用する方法)
   - Blog post: [Python の unittest で Mock を使用しテストの幅を広げる - Qiita](https://qiita.com/pokapu/items/bb4d6bd7645ca4820235)

@@ -28,5 +28,5 @@ Blog post: [Python の unittest で Mock を使用しテストの幅を広げる
 4. Run tests
 
    ```bash
-   py -m unittest main.py -v
+   python -m unittest main.py -v
    ```
