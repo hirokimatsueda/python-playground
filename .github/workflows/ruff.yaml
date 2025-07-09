@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - id: set-apps
         run: |
-          apps=$(ls -1 apps | jq -R . | jq -s .)
+          apps=$(ls -1 apps | jq -R . | jq -c -s .)
           echo "apps=$apps"
           echo "apps=$apps" >> $GITHUB_OUTPUT
 
