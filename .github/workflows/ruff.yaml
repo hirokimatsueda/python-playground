@@ -8,11 +8,23 @@ permissions:
   security-events: write
 
 jobs:
+  set-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.set-apps.outputs.apps }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: set-apps
+        run: |
+          apps=$(ls -1 apps | jq -R . | jq -s .)
+          echo "apps=$apps"
+          echo "apps=$apps" >> $GITHUB_OUTPUT
+
   lint:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app: [foo, bar]
+        app: ${{ fromJson(needs.set-matrix.outputs.apps) }}
 
     steps:
       - uses: actions/checkout@v4
@@ -29,4 +41,4 @@ jobs:
         if: success() || failure()
         with:
           sarif_file: ruff_output.sarif
-          category: ${{ matrix.app }}
+          category: ruff-${{ matrix.app }}
