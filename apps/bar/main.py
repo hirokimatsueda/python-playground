@@ -1,1 +1,2 @@
-print(f"this is bar")
+a = f"a"
+print("this is bar")

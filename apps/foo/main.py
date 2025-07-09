@@ -1,1 +1,2 @@
-print(f"this is foo")
+b = f"b"
+print("this is foo")
