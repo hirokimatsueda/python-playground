@@ -24,6 +24,7 @@ jobs:
     needs: set-matrix
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         app: ${{ fromJson(needs.set-matrix.outputs.apps) }}
 
