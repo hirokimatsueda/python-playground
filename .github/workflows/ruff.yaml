@@ -19,7 +19,7 @@ jobs:
             dir=$(basename "$app")
             output_path="app/$dir.sarif"
             ruff check "$app" --output-format sarif --output-file $output_path
-            cat $output_path
+            echo $output_path
           done
 
       - name: Upload SARIF
