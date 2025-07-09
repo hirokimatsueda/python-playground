@@ -17,7 +17,9 @@ jobs:
           set +e
           for app in apps/*/; do
             dir=$(basename "$app")
-            ruff check "$app" --output-format sarif --output-file "app/$dir.sarif"
+            output_path="app/$dir.sarif"
+            ruff check "$app" --output-format sarif --output-file $output_path
+            cat $output_path
           done
 
       - name: Upload SARIF
