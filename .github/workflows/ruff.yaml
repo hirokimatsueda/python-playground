@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - ruff-ci
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ruff
+        run: python -m pip install ruff
+
+      - name: Lint and generate SARIF per app
+        run: |
+          set +e
+          for app in apps/*/; do
+            ruff check "$app" --output-format sarif --output "$app.sarif"
+          done
+
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: success() || failure()
+        with:
+          sarif_file: "apps/"
